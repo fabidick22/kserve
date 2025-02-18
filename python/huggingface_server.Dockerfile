@@ -32,7 +32,7 @@ RUN cd huggingfaceserver && poetry install --no-root --no-interaction --no-cache
 COPY huggingfaceserver huggingfaceserver
 RUN cd huggingfaceserver && poetry install --no-interaction --no-cache
 
-RUN pip install --upgrade pip && pip install transformers_neuronx vllm==${VLLM_VERSION} 
+RUN pip install --upgrade pip && pip install torch-xla optimum-neuron torch-neuronx neuronx-hwm neuronx-distributed neuronx-cc libneuronxla transformers_neuronx vllm==${VLLM_VERSION} 
 
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04 AS prod
 
